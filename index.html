@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080d2b">
+<title>Мета та структура презентації — STEM 10</title>
+<style>
+:root{--bg:#070b25;--panel:#10183b;--panel2:#151f49;--line:#283568;--text:#f3f5ff;--muted:#a8b2d8;--cyan:#43d9ff;--violet:#9258ff;--pink:#f16bda;--yellow:#ffd66b;--green:#5ee0b1}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#20205a 0,transparent 36%),var(--bg);color:var(--text);font:16px/1.65 Inter,Segoe UI,Arial,sans-serif}
+a{color:var(--cyan)}.wrap{max-width:1180px;margin:auto;padding:0 22px}
+header{min-height:580px;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(90deg,rgba(6,10,34,.97) 0%,rgba(8,13,43,.88) 44%,rgba(8,13,43,.28) 100%),url('https://images.openai.com/static-rsc-4/WtHX4swjUmAYNeuRSthBh8ToScNsL6EBWFpDBOGMqJBM3F3o_8UcpNSNRMxW1OL2AieAl_akYDutZYV2TBX8snSMOwmwWJZaislPMFkoIawyDt-Z_M8jW4Je6Qx5IJAimKXnwhSvprpJ8URtv9tAzHiFtqPW4oEyp7qNsc7Aei2bOJ0vs6XfT8RqrSiTjNI2?purpose=fullsize') center/cover}
+header:after{content:"";position:absolute;inset:auto -10% -160px 35%;height:320px;background:radial-gradient(ellipse,#794dff55,transparent 65%);filter:blur(25px)}
+.hero{position:relative;z-index:1;max-width:700px;padding:70px 0}.eyebrow{color:var(--cyan);letter-spacing:.18em;text-transform:uppercase;font-size:.78rem;font-weight:800}
+h1{font-size:clamp(2.5rem,6vw,4.8rem);line-height:1.04;margin:18px 0 20px;letter-spacing:-.04em}.gradient{background:linear-gradient(90deg,var(--cyan),#b48bff,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:1.15rem;color:#d5dcff;max-width:610px}.chips{display:flex;flex-wrap:wrap;gap:10px;margin:25px 0}.chip{border:1px solid #6171b9;background:#111a42bb;border-radius:30px;padding:7px 13px;font-size:.84rem;color:#e7eaff}
+.btn{border:0;border-radius:12px;padding:12px 18px;background:linear-gradient(100deg,#287cf5,#9258ff);color:white;font-weight:800;cursor:pointer;box-shadow:0 8px 25px #4b4bff44}.btn:hover{filter:brightness(1.15);transform:translateY(-1px)}.btn.alt{background:#202b5a;border:1px solid #44528c;box-shadow:none}.btn.glow{background:linear-gradient(100deg,#14bde9,#8054ff)}
+nav{position:sticky;top:0;z-index:20;background:#080d25eF;backdrop-filter:blur(16px);border-bottom:1px solid #293568}nav .wrap{display:flex;gap:6px;overflow:auto;padding-top:9px;padding-bottom:9px}nav a{text-decoration:none;white-space:nowrap;color:#b9c6ef;padding:9px 12px;border-radius:9px;font-size:.88rem;font-weight:700}nav a:hover{background:#1c2858;color:white}
+main{padding:35px 0 70px}.section{margin:38px 0;scroll-margin-top:80px}.heading{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:18px}.eyebrow2{color:var(--violet);font-size:.75rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}h2{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.15;margin:5px 0;color:#fff}h3{margin:0 0 9px;font-size:1.12rem}.sub{color:var(--muted);margin:0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.card{background:linear-gradient(145deg,#121b42,#0d1534);border:1px solid var(--line);border-radius:19px;padding:22px;box-shadow:0 12px 35px #02061766}.card p,.card li{color:#c5cdef}.card strong{color:white}.icon{font-size:1.6rem;margin-bottom:8px}.callout{border:1px solid #5c4ea8;background:linear-gradient(100deg,#35226b55,#102b5966);border-radius:14px;padding:16px 18px;margin:15px 0;color:#e5e7ff}.callout b{color:var(--yellow)}
+.stepgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.step{display:flex;gap:14px;border:1px solid var(--line);background:#10183b;border-radius:16px;padding:17px;transition:.2s}.step.done{border-color:#328b83;background:#0d2b3a}.number{width:42px;height:42px;flex:none;border-radius:13px;display:grid;place-items:center;font-weight:900;color:#07112c;background:linear-gradient(135deg,var(--cyan),#9d8bff)}.step.done .number{background:var(--green)}.step p{margin:3px 0 8px;color:var(--muted);font-size:.93rem}.check{font-size:.85rem;color:var(--cyan);font-weight:700;cursor:pointer}.check input{accent-color:var(--green);width:17px;height:17px;vertical-align:middle;margin-right:6px}
+.progress{height:10px;background:#242e5b;border-radius:20px;overflow:hidden;margin:12px 0}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--violet),var(--pink));transition:.25s}.smallrow{display:flex;justify-content:space-between;color:#cbd5fa;font-weight:700;font-size:.9rem}
+table{width:100%;border-collapse:collapse;font-size:.93rem}th,td{text-align:left;padding:12px;border-bottom:1px solid #2a3768;vertical-align:top}th{color:var(--cyan);background:#17214a}td{color:#c9d2f2}
+.promptbox textarea,.field input,.field select,.field textarea{width:100%;background:#080f2c;border:1px solid #354477;border-radius:10px;color:#f5f6ff;padding:11px;font:inherit}.field label{display:block;color:#cbd5fa;font-weight:700;margin:9px 0 5px}.field textarea{min-height:80px}.output{background:#080f2c;border:1px dashed #5867a9;border-radius:13px;padding:15px;white-space:pre-wrap;color:#d9e8ff;min-height:90px;margin-top:12px}
+.quizq{padding:16px;border:1px solid var(--line);border-radius:14px;margin:12px 0;background:#0c1433}.quizq p{font-weight:800;margin:0 0 10px}.quizq label{display:block;color:#c5cdef;padding:5px 0;cursor:pointer}.quizq input{accent-color:var(--violet);margin-right:8px}.result{font-weight:800;color:var(--yellow);margin-top:12px}
+.slide-row{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;margin:8px 0}.slide-row input{min-width:0;background:#080f2c;border:1px solid #354477;border-radius:9px;padding:9px;color:white}.slide-row button{background:#492b65;border:1px solid #754a9a;color:#ffd9ff;border-radius:9px;padding:5px 10px}
+footer{border-top:1px solid #273363;background:#070b20;padding:30px 0;text-align:center;color:#9eacd7}footer b{color:var(--cyan)}
+@media(max-width:760px){header{min-height:520px;background-position:62% center}.hero{padding:55px 0}.grid,.grid3,.stepgrid{grid-template-columns:1fr}.heading{display:block}.card{padding:17px}.slide-row{grid-template-columns:1fr}.wrap{padding:0 16px}table{font-size:.83rem}th,td{padding:8px}}
+@media print{nav,.btn,.check{display:none!important}body{background:white;color:#111}.card,.step{background:white;color:#111;box-shadow:none;break-inside:avoid}.card p,.card li,.step p{color:#333}header{min-height:0;background:#111!important}main{padding:10px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="hero">
+<div class="eyebrow">Пілотний академічний ліцей · STEM-кластер · 10 клас</div>
+<h1>Презентація,<br><span class="gradient">що працює</span></h1>
+<p><strong>Мета та структура презентації. Правила оформлення презентації.</strong><br>Інтерактивний навчальний маршрут: від задуму й логіки повідомлення — до переконливого візуального виступу.</p>
+<div class="chips"><span class="chip">✦ STEM-мислення</span><span class="chip">▣ Візуальна комунікація</span><span class="chip">⌁ Практичний конструктор</span></div>
+<a class="btn glow" href="#route">Розпочати навчальний маршрут&nbsp; →</a>
+</div></div></header>
+<nav><div class="wrap"><a href="#goal">Мета</a><a href="#structure">Структура</a><a href="#design">Дизайн</a><a href="#route">Дорожня карта</a><a href="#builder">Планувальник</a><a href="#quiz">Перевір себе</a><a href="#task">Практика</a></div></nav>
+<main class="wrap">
+<section class="section" id="goal"><div class="heading"><div><div class="eyebrow2">01 / Сенс</div><h2>Спочатку — мета, потім — слайди</h2><p class="sub">Презентація — це не набір сторінок, а спроєктоване повідомлення для конкретної аудиторії.</p></div></div>
+<div class="grid">
+<div class="card"><div class="icon">🎯</div><h3>Що таке мета презентації?</h3><p>Це чітко сформульований результат, якого має досягти виступ: <strong>пояснити, поінформувати, переконати, навчити або спонукати до дії.</strong> Мета визначає зміст, послідовність і спосіб подання матеріалу.</p></div>
+<div class="card"><div class="icon">👥</div><h3>Хто моя аудиторія?</h3><p>Перед створенням презентації з’ясуй, що слухачі вже знають, що їм потрібно зрозуміти, скільки часу мають і який рівень термінології буде доречним.</p></div>
+<div class="card"><div class="icon">🧭</div><h3>Ключове повідомлення</h3><p>Сформулюй одну головну думку одним реченням. Кожен слайд має підтримувати її фактами, поясненнями, прикладами або візуальними доказами.</p></div>
+<div class="card"><div class="icon">🧪</div><h3>STEM-підхід</h3><p>Для STEM-теми важливі проблема, дослідницьке запитання, метод, дані, аналіз, висновок і практичне застосування. Не підмінюй доказ красивою картинкою.</p></div>
+</div>
+<div class="callout"><b>Формула ефективності:</b> мета + аудиторія + одна головна думка + логічний маршрут + читабельний дизайн = презентація, яку розуміють.</div>
+</section>
+<section class="section" id="structure"><div class="heading"><div><div class="eyebrow2">02 / Архітектура</div><h2>Логічна структура презентації</h2><p class="sub">Кожна частина відповідає на запитання слухача.</p></div></div>
+<div class="card">
+<table><thead><tr><th>Частина</th><th>Що розмістити</th><th>Навіщо це потрібно</th></tr></thead><tbody>
+<tr><td><strong>1. Титульний слайд</strong></td><td>Тема, автор, клас/заклад, дата (за потреби)</td><td>Одразу задає контекст і представляє тему.</td></tr>
+<tr><td><strong>2. Вступ / проблема</strong></td><td>Актуальність, проблемне запитання, короткий факт або ситуація</td><td>Зацікавлює та пояснює, чому тема важлива.</td></tr>
+<tr><td><strong>3. Мета й завдання</strong></td><td>Мета, 2–4 конкретні завдання, об’єкт дослідження (за потреби)</td><td>Показує, до якого результату рухається автор.</td></tr>
+<tr><td><strong>4. Основна частина</strong></td><td>Ключові поняття, методи, етапи, аргументи, дані, приклади</td><td>Послідовно розкриває тему. Один слайд — одна основна думка.</td></tr>
+<tr><td><strong>5. Результати / демонстрація</strong></td><td>Модель, експеримент, діаграма, прототип, порівняння</td><td>Підкріплює твердження конкретними доказами.</td></tr>
+<tr><td><strong>6. Висновки</strong></td><td>Відповіді на мету й завдання, обмеження, перспективи</td><td>Фіксує головне, а не просто повторює зміст.</td></tr>
+<tr><td><strong>7. Джерела</strong></td><td>Автор, назва, ресурс/видання, дата або URL; джерела зображень</td><td>Дає змогу перевірити інформацію та поважає авторство.</td></tr>
+<tr><td><strong>8. Фінальний слайд</strong></td><td>Ключова думка, запитання / запрошення до обговорення</td><td>Завершує виступ і відкриває діалог.</td></tr>
+</tbody></table>
+</div>
+<div class="grid3" style="margin-top:15px">
+<div class="card"><h3>Не обов’язково 8 слайдів</h3><p>Це логічні блоки, а не жорстка кількість. Основна частина може займати кілька слайдів.</p></div>
+<div class="card"><h3>Переходи мають сенс</h3><p>Поясни, чому наступний блок логічно випливає з попереднього.</p></div>
+<div class="card"><h3>Висновок — не вступ</h3><p>У висновках мають з’явитися відповіді, отримані в ході роботи.</p></div>
+</div></section>
+<section class="section" id="design"><div class="heading"><div><div class="eyebrow2">03 / Візуальна система</div><h2>Правила оформлення слайдів</h2><p class="sub">Дизайн має допомагати сприймати зміст, а не змагатися з ним.</p></div></div>
+<div class="grid">
+<div class="card"><div class="icon">🔤</div><h3>Типографіка</h3><ul><li>Використовуй 1–2 шрифти без зарубок.</li><li>Заголовок — помітно більший за основний текст.</li><li>Орієнтир для проєктора: заголовок 28–36 pt, текст 20–28 pt; дрібні підписи — лише за необхідності.</li><li>Не використовуй довгі абзаци й суцільний CAPS LOCK.</li></ul></div>
+<div class="card"><div class="icon">🎨</div><h3>Колір і контраст</h3><ul><li>Обери 2–4 основні кольори й повторюй їх послідовно.</li><li>Забезпеч достатній контраст тексту та фону.</li><li>Не кодуй важливу інформацію лише кольором.</li><li>Уникай строкатих фонів під текстом.</li></ul></div>
+<div class="card"><div class="icon">🧩</div><h3>Композиція</h3><ul><li>Одна головна думка на слайд.</li><li>Вирівнюй елементи по сітці.</li><li>Залишай вільний простір.</li><li>Використовуй однакові відступи й стиль заголовків.</li></ul></div>
+<div class="card"><div class="icon">📊</div><h3>Зображення й дані</h3><ul><li>Діаграма має відповідати типу даних.</li><li>Підписуй осі, одиниці вимірювання та джерело.</li><li>Не спотворюй масштаби й пропорції.</li><li>Зображення повинні бути чіткими й доречними.</li></ul></div>
+<div class="card"><div class="icon">🎞️</div><h3>Анімація та переходи</h3><ul><li>Застосовуй лише там, де вони пояснюють процес або послідовність.</li><li>Обирай 1–2 стримані типи ефектів.</li><li>Уникай миготіння, надмірного руху й звукових ефектів.</li></ul></div>
+<div class="card"><div class="icon">♿</div><h3>Доступність</h3><ul><li>Забезпеч читабельний контраст і достатній розмір.</li><li>Додавай альтернативний текст до змістовних зображень.</li><li>Не перевантажуй слайд інформацією.</li><li>Перевіряй, чи зрозумілий зміст без усного пояснення кольору.</li></ul></div>
+</div>
+<div class="callout"><b>Правило 6 × 6 — лише орієнтир, а не закон.</b> Не потрібно механічно обмежувати кожен слайд шістьма рядками та шістьма словами. Головне — читабельність, логічна ієрархія й відсутність перевантаження.</div>
+</section>
+<section class="section" id="route"><div class="heading"><div><div class="eyebrow2">04 / Навчальний маршрут</div><h2>Дорожня карта створення презентації</h2><p class="sub">Виконуй етапи послідовно й відмічай завершені.</p></div></div>
+<div class="card" style="margin-bottom:15px"><div class="smallrow"><span>Твій прогрес</span><span id="progressText">0 / 8 етапів</span></div><div class="progress"><div class="bar" id="bar"></div></div><span class="sub" id="hint">Почни з постановки мети.</span></div>
+<div class="stepgrid" id="steps">
+<div class="step"><div class="number">01</div><div><h3>Визнач мету й аудиторію</h3><p>Для кого створюєш презентацію? Що слухачі мають знати, зрозуміти або зробити після виступу?</p><label class="check"><input type="checkbox"> Етап виконано</label></div></div>
+<div class="step"><div class="number">02</div><div><h3>Сформулюй головну думку</h3><p>Запиши ключове повідомлення одним реченням. Воно стане критерієм відбору всього матеріалу.</p><label class="check"><input type="checkbox"> Етап виконано</label></div></div>
+<div class="step"><div class="number">03</div><div><h3>Збери й перевір інформацію</h3><p>Використовуй надійні джерела, перевіряй дати, числа, одиниці вимірювання та походження зображень.</p><label class="check"><input type="checkbox"> Етап виконано</label></div></div>
+<div class="step"><div class="number">04</div><div><h3>Побудуй сценарій</h3><p>Розподіли зміст на вступ, основну частину, результати, висновки та джерела. Один слайд — одна теза.</p><label class="check"><input type="checkbox"> Етап виконано</label></div></div>
+<div class="step"><div class="number">05</div><div><h3>Обери візуальний стиль</h3><p>Визнач палітру, шрифти, сітку, формат зображень і правила для графіків. Дотримуйся єдності.</p><label class="check"><input type="checkbox"> Етап виконано</label></div></div>
+<div class="step"><div class="number">06</div><div><h3>Створи й наповни слайди</h3><p>Подавай тези стисло, використовуй схеми, фото, таблиці та діаграми. Не дублюй усний виступ великими абзацами.</p><label class="check"><input type="checkbox"> Етап виконано</label></div></div>
+<div class="step"><div class="number">07</div><div><h3>Перевір і відрепетируй</h3><p>Перевір орфографію, читабельність, посилання, джерела, відображення на екрані та тривалість виступу.</p><label class="check"><input type="checkbox"> Етап виконано</label></div></div>
+<div class="step"><div class="number">08</div><div><h3>Представ і вдоскональ</h3><p>Виступай, дотримуйся контакту з аудиторією, відповідай на запитання й урахуй зворотний зв’язок.</p><label class="check"><input type="checkbox"> Етап виконано</label></div></div>
+</div></section>
+<section class="section" id="builder"><div class="heading"><div><div class="eyebrow2">05 / Інструмент</div><h2>Планувальник структури</h2><p class="sub">Склади власний сценарій презентації перед роботою в PowerPoint або Google Slides.</p></div></div>
+<div class="card"><div class="field"><label for="topic">Тема презентації</label><input id="topic" placeholder="Наприклад: Як працює сонячна електростанція?"></div><div class="field"><label for="purpose">Мета</label><input id="purpose" placeholder="Пояснити принцип перетворення сонячної енергії на електричну"></div><div class="field"><label for="audience">Аудиторія</label><input id="audience" placeholder="Учні 10 класу STEM-кластеру"></div>
+<h3 style="margin-top:20px">Сценарій слайдів</h3><p class="sub">Для кожного слайда запиши заголовок і головну тезу. За потреби додай або видали рядки.</p>
+<div id="slideList">
+<div class="slide-row"><input value="Титульний слайд" aria-label="Назва слайда"><input value="Тема, автор, клас" aria-label="Теза слайда"><button type="button" class="remove">×</button></div>
+<div class="slide-row"><input value="Проблема / актуальність" aria-label="Назва слайда"><input value="Чому ця тема важлива?" aria-label="Теза слайда"><button type="button" class="remove">×</button></div>
+<div class="slide-row"><input value="Мета та завдання" aria-label="Назва слайда"><input value="Що досліджуємо і як?" aria-label="Теза слайда"><button type="button" class="remove">×</button></div>
+<div class="slide-row"><input value="Основна частина" aria-label="Назва слайда"><input value="Поняття, принципи, методи, докази" aria-label="Теза слайда"><button type="button" class="remove">×</button></div>
+<div class="slide-row"><input value="Результати" aria-label="Назва слайда"><input value="Дані, модель, демонстрація" aria-label="Теза слайда"><button type="button" class="remove">×</button></div>
+<div class="slide-row"><input value="Висновки" aria-label="Назва слайда"><input value="Відповідь на мету та завдання" aria-label="Теза слайда"><button type="button" class="remove">×</button></div>
+<div class="slide-row"><input value="Джерела" aria-label="Назва слайда"><input value="Перелік використаних джерел" aria-label="Теза слайда"><button type="button" class="remove">×</button></div>
+</div>
+<div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:14px"><button class="btn alt" id="addSlide">＋ Додати слайд</button><button class="btn" id="makePlan">Сформувати план</button><button class="btn alt" id="downloadPlan">Завантажити план (.txt)</button></div><div class="output" id="planOutput">Тут з’явиться структура твоєї презентації.</div></div>
+</section>
+<section class="section" id="quiz"><div class="heading"><div><div class="eyebrow2">06 / Самоперевірка</div><h2>Чи засвоїв/ла ти правила?</h2><p class="sub">Обери одну правильну відповідь у кожному запитанні.</p></div></div>
+<div class="card" id="quizBox">
+<div class="quizq"><p>1. Що потрібно визначити перед створенням слайдів?</p><label><input type="radio" name="q1" value="a"> Колір фону</label><label><input type="radio" name="q1" value="b"> Мету й аудиторію</label><label><input type="radio" name="q1" value="c"> Тип анімації</label></div>
+<div class="quizq"><p>2. Який принцип допомагає зробити структуру зрозумілою?</p><label><input type="radio" name="q2" value="a"> Одна головна думка на слайд</label><label><input type="radio" name="q2" value="b"> Усі подробиці на одному слайді</label><label><input type="radio" name="q2" value="c"> Випадковий порядок фактів</label></div>
+<div class="quizq"><p>3. Що важливо для діаграми?</p><label><input type="radio" name="q3" value="a"> Якомога більше декоративних ефектів</label><label><input type="radio" name="q3" value="b"> Відсутність підписів</label><label><input type="radio" name="q3" value="c"> Підписи, одиниці вимірювання та джерело</label></div>
+<div class="quizq"><p>4. Яке твердження про правило 6 × 6 правильне?</p><label><input type="radio" name="q4" value="a"> Це обов’язкова вимога для кожного слайда</label><label><input type="radio" name="q4" value="b"> Це орієнтир проти перевантаження, а не жорсткий закон</label><label><input type="radio" name="q4" value="c"> Воно стосується лише кольорів</label></div>
+<div class="quizq"><p>5. Для чого потрібен фінальний слайд?</p><label><input type="radio" name="q5" value="a"> Повторити всі абзаци презентації</label><label><input type="radio" name="q5" value="b"> Завершити думку й запросити до діалогу</label><label><input type="radio" name="q5" value="c"> Додати випадкове зображення</label></div>
+<button class="btn glow" id="checkQuiz">Перевірити відповіді</button><div class="result" id="quizResult" aria-live="polite"></div>
+</div></section>
+<section class="section" id="task"><div class="heading"><div><div class="eyebrow2">07 / Практичне застосування</div><h2>Твоє STEM-завдання</h2><p class="sub">Спроєктуй презентацію, яка пояснює реальну проблему або технологічне рішення.</p></div></div>
+<div class="grid">
+<div class="card"><div class="icon">🚀</div><h3>Завдання</h3><p>Підготуй презентацію на 7–10 слайдів на одну з тем:</p><ul><li>Штучний інтелект у медицині / освіті / транспорті</li><li>Відновлювана енергетика</li><li>Розумне місто та IoT</li><li>3D-моделювання у проєктуванні</li><li>Екологічний моніторинг довкілля</li></ul><p><strong>Формат:</strong> 3–5 хвилин виступу, один ключовий висновок, щонайменше одна схема або діаграма.</p></div>
+<div class="card"><div class="icon">🏁</div><h3>Критерії успіху</h3><ul><li>Мета й аудиторія визначені чітко.</li><li>Структура логічна, є вступ, основна частина й висновки.</li><li>На слайдах немає інформаційного перевантаження.</li><li>Використано доречні візуалізації та підписи.</li><li>Дотримано єдиного стилю й правил доступності.</li><li>Наведено достовірні джерела.</li><li>Автор упевнено пояснює матеріал без читання зі слайдів.</li></ul></div>
+</div>
+<div class="callout"><b>Фінальна перевірка:</b> якщо прибрати усний текст, чи зрозуміє аудиторія логіку слайдів? Якщо прибрати слайди, чи зможеш ти пояснити тему? Сильна презентація підтримує виступ, але не замінює доповідача.</div>
+</section>
+</main>
+<footer><div class="wrap"><b>STEM · 10 клас · Пілотний академічний ліцей</b><br>Думай системно. Пояснюй наочно. Переконуй доказами.</div></footer>
+<script>
+const checks=[...document.querySelectorAll('#steps input[type=checkbox]')],store='stem-presentation-progress-v1';
+function progress(){let n=checks.filter(x=>x.checked).length;document.getElementById('progressText').textContent=`${n} / ${checks.length} етапів`;document.getElementById('bar').style.width=n/checks.length*100+'%';document.getElementById('hint').textContent=n===8?'Усі етапи завершено! Час презентувати результат.':n===0?'Почни з постановки мети.':`Залишилося ${checks.length-n} етап(ів). Рухайся далі!`;try{localStorage.setItem(store,JSON.stringify(checks.map(c=>c.checked)))}catch(e){}}
+try{const a=JSON.parse(localStorage.getItem(store)||'[]');checks.forEach((c,i)=>c.checked=!!a[i])}catch(e){}checks.forEach(c=>c.addEventListener('change',progress));progress();
+const list=document.getElementById('slideList');
+function bindRemove(){list.querySelectorAll('.remove').forEach(b=>b.onclick=()=>b.parentElement.remove())}bindRemove();
+document.getElementById('addSlide').onclick=()=>{let d=document.createElement('div');d.className='slide-row';d.innerHTML='<input placeholder="Назва слайда" aria-label="Назва слайда"><input placeholder="Головна теза" aria-label="Теза слайда"><button type="button" class="remove">×</button>';list.appendChild(d);bindRemove()};
+function planText(){let rows=[...list.querySelectorAll('.slide-row')].map((r,i)=>`${i+1}. ${r.children[0].value||'Без назви'}\n   Головна теза: ${r.children[1].value||'Не визначено'}`).join('\n');return `ПЛАН ПРЕЗЕНТАЦІЇ\nТема: ${document.getElementById('topic').value}\nМета: ${document.getElementById('purpose').value}\nАудиторія: ${document.getElementById('audience').value}\n\n${rows}`;}
+document.getElementById('makePlan').onclick=()=>document.getElementById('planOutput').textContent=planText();
+document.getElementById('downloadPlan').onclick=()=>{let blob=new Blob([planText()],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='План_презентації_STEM.txt';a.click();URL.revokeObjectURL(a.href)};
+document.getElementById('checkQuiz').onclick=()=>{let ans={q1:'b',q2:'a',q3:'c',q4:'b',q5:'b'},score=0,missing=0;for(let k in ans){let v=document.querySelector(`input[name=${k}]:checked`);if(!v)missing++;else if(v.value===ans[k])score++}document.getElementById('quizResult').textContent=missing?`Дайте відповідь на всі запитання. Залишилося: ${missing}.`:`Ваш результат: ${score} із 5. `+(score===5?'Чудово! Ви готові проєктувати власну презентацію.':score>=3?'Добре! Перегляньте теми, де були помилки.':'Повторіть матеріал і спробуйте ще раз.')};
+</script>
+</body></html>
